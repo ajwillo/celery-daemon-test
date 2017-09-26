@@ -1,0 +1,20 @@
+version: '3'  
+services:  
+  web:
+    image: itapp-celery:latest
+    container_name: itapp-celery
+    working_dir: /itapp/itapp
+    command: bash -c "exec gunicorn itapp.wsgi -b 0.0.0.0:8000 && /etc/init.d/celeryd start && /etc/init.d/celerybeat start"
+    ports:
+      - "8000:9000"
+    depends_on:
+      - rabbitmq
+    networks:
+      - default       
+  rabbitmq:
+    image: rabbit-celery:latest
+    container_name: rabbitmq-celery
+    expose:
+      - 5672
+networks:
+  default:
