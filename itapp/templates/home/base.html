@@ -1,0 +1,30 @@
+<html>
+	<head>
+		<meta http-equiv="Content-type" content="text/html; charset=utf-8" /> 
+		<title>IT Services</title>
+	</head>
+	<body>
+		{% include 'home/navigation.html' %}
+			<div id="header-page-content-top"></div>
+		</div>
+		<div id="page-container" class="">		
+		<div id="content-body">
+				{% if breadcrumb_history %}
+		<div class="breadcrumbs">
+		<span style="color:#27ae60;">History:</span>
+		{% for page in breadcrumb_history %}
+			<a href="{{ page.url }}">
+			{% for item in page.display %}
+			{{ item }}
+			{% endfor %}
+			</a> >
+		{% endfor %}
+		</div>
+		{% endif %}		
+
+			{% block content %}
+			{% endblock %}	
+			</div>			
+		</div>
+	</body>
+</html>

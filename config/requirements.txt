@@ -1,0 +1,12 @@
+celery
+django
+django-appconf
+django-celery-results
+django-dbtemplates
+django-storages
+gunicorn
+mysqlclient
+python-dateutil
+sqlparse
+urllib3
+joblib

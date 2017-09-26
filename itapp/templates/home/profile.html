@@ -1,0 +1,22 @@
+{% block content %}
+<h1>Edit Profile - {{ user.first_name }} {{ user.last_name }}</h1>
+
+{% block messages %}
+    {% if messages %}
+    <ul class="messagelist">{% for message in messages %}
+      <li{% if message.tags %} class="{{ message.tags }}"{% endif %}>{{ message|capfirst }}</li>
+    {% endfor %}</ul>
+    {% endif %}
+{% endblock messages %}
+    <p>&nbsp;</p>
+
+    <h3>Subscriptions</h3>
+
+    <form method="post">
+      {% csrf_token %}
+      <p>&nbsp;</p>
+      {{ profile_form.as_p }}
+      <p>&nbsp;</p>
+      <button type="submit" class="button">Save changes</button>
+    </form>
+{% endblock %}
